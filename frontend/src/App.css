@@ -1,0 +1,16 @@
+.App {
+  text-align: center;
+}
+
+.App-Title {
+  background-color: black;
+  color:#15853c;
+  padding: 20px;
+}
+
+.Webacam {
+  width: 50vw;
+}
+h1 {
+  margin: 0;
+}
