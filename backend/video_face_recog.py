@@ -20,6 +20,11 @@ while True:
         # draw rectangle over face
         cv2.rectangle(frame, (startX,startY), (endX,endY), (0,255,0), 2)
 
+    #just the face (feed into NN)
+    face = frame[startX: endX, startY: endY]
+
+    #saving to a file    
+    # cv2.imwrite( "./_0.png" , face)
 
     #show the current frame
     cv2.imshow('Video', frame)
