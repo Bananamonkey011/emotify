@@ -5,5 +5,5 @@ img = cv2.imread('happy_girl.jpg')
 
 cv2.imshow("Image", img)
 prediction = DeepFace.analyze(img) # painfully slow on first run but very accurate
-print(prediction['dominant_emotion'])
+print(prediction)
 
