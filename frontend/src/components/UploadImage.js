@@ -12,10 +12,12 @@ const videoConstraints = {
 
 export const WebcamCapture = () => {
 
+    //State to manage image
     const [image,setImage]=useState('');
+    //webcam ref
     const webcamRef = React.useRef(null);
 
-    
+    // Callback function to setImage based on webcam screenshot
     const capture = React.useCallback(
         () => {
         const imageSrc = webcamRef.current.getScreenshot();
@@ -25,15 +27,18 @@ export const WebcamCapture = () => {
 
     return (
         <div className="webcam-container">
+            {/* Display live camera feed or most recent capture depinding on if an image has been captured */}
             <div className="webcam-img">
-
                 {image == '' ? <Webcam style={{height: "100%", borderRadius: "20px"}}
                     audio={false}
+                    mirrored
                     ref={webcamRef}
                     screenshotFormat="image/jpeg"
                     videoConstraints={videoConstraints}
                 /> : <img style={{height: "100%", borderRadius: "20px"}} src={image} />}
             </div>
+
+            {/* Take Screenshot button switches to retake image if image has been captured already */}
             <div>
                 {image != '' ?
                     <button onClick={(e) => {
@@ -48,6 +53,8 @@ export const WebcamCapture = () => {
                     }}
                         className="webcam-btn">Capture</button>
                 }
+                {/* Overlay div box to show results of face detection algorithm */}
+                {/* <div className='faceOverlay'/> */}
             </div>
         </div>
     );
