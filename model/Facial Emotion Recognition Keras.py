@@ -6,11 +6,6 @@ from keras.models import Sequential, load_model
 from keras.layers import Dense, Dropout, Flatten, Conv2D, MaxPooling2D
 import os
 
-img = cv2.imread("happy_girl") #TEST IMAGE
-
-######### IF MODEL EXISTS ONCE SAVE FILE MADE
-
-#model = load_model(model_file_10epochs.hs)
 
 ########## DIRECTORY FOR DATA && SEPARATION OF TRAIN AND TEST DATA
 
@@ -77,7 +72,7 @@ model.compile(optimizer = opt, loss = 'categorical_crossentropy', metrics = ['ac
 
 #################### TRAINING MODEL
 
-num_epochs = 10 #IDEALLY 100
+num_epochs = 30 #IDEALLY 100
 num_train_img = 0
 num_test_img = 0
 
@@ -93,14 +88,8 @@ history = model.fit(train_gen,
                     validation_data = test_gen,
                     validation_steps = num_test_img//32)
 
-#model.save(os.path.join(os.getcwd(),model_file_10epochs.hs))
+model.save(os.path.join(os.getcwd(),model_file_10epochs.hs))
 
-#################### MODEL OUTPUTS RESULTS
-
-result = model.predict(img)
-label = np.argmax(result, axis=1)[0]
-print(result)
-print(label)
 
 
           
