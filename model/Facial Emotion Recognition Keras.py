@@ -72,7 +72,7 @@ model.compile(optimizer = opt, loss = 'categorical_crossentropy', metrics = ['ac
 
 #################### TRAINING MODEL
 
-num_epochs = 30 #IDEALLY 100
+num_epochs = 15 #IDEALLY 100
 num_train_img = 0
 num_test_img = 0
 
@@ -88,7 +88,7 @@ history = model.fit(train_gen,
                     validation_data = test_gen,
                     validation_steps = num_test_img//32)
 
-model.save(os.path.join(os.getcwd(),model_file_10epochs.hs))
+model.save(os.path.join(os.getcwd(),"model_file_15epochs.h5"))
 
 
 
