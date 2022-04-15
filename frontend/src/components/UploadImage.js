@@ -25,7 +25,7 @@ export const WebcamCapture = () => {
         <div className="webcam-container">
             {/* Boundry Box source take from flask route in backend/app.py */}
             <div className="webcam-img">
-                <img style={{ height: "100%", borderRadius: "20px" }} src={"http://127.0.0.1:5000/video_feed"} />
+                <img style={{ height: "100%", borderRadius: "20px", transform: "scaleX(-1)" }} src={"http://127.0.0.1:5000/video_feed"} />
             </div>
 
             {/* Display live camera feed or most recent capture depinding on if an image has been captured
