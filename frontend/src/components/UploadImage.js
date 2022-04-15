@@ -23,6 +23,7 @@ export const WebcamCapture = () => {
 
     return (
         <div className="webcam-container">
+            {/* Boundry Box source take from flask route in backend/app.py */}
             <div className="webcam-img">
                 <img style={{ height: "100%", borderRadius: "20px" }} src={"http://127.0.0.1:5000/video_feed"} />
             </div>
