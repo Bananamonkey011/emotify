@@ -1,6 +1,5 @@
 import './App.css';
 import UploadImage from './components/UploadImage';
-import PythonCamera from './components/PythonCam'
 function App() {
   return (
     <div className="App">
@@ -9,7 +8,6 @@ function App() {
 
       {/* Main image capture component */}
       <UploadImage/>
-      <PythonCamera/>
     </div>
   );
 }
