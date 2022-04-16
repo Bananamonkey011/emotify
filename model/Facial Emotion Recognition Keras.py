@@ -4,6 +4,7 @@ import keras.optimizers
 from keras.preprocessing.image import ImageDataGenerator
 from keras.models import Sequential, load_model
 from keras.layers import Dense, Dropout, Flatten, Conv2D, MaxPooling2D
+import numpy as np
 import os
 
 
@@ -49,9 +50,9 @@ model.add(Conv2D(64, kernel_size=(3,3), activation = 'relu'))
 model.add(MaxPooling2D(pool_size=(2,2)))
 model.add(Dropout(0.1))
 
-model.add(Conv2D(64, kernel_size=(3,3), activation = 'relu'))
-model.add(MaxPooling2D(pool_size=(2,2)))
-model.add(Dropout(0.1))
+# model.add(Conv2D(64, kernel_size=(3,3), activation = 'relu'))
+# model.add(MaxPooling2D(pool_size=(2,2)))
+# model.add(Dropout(0.1))
 
 model.add(Conv2D(128, kernel_size=(3,3), activation = 'relu'))
 model.add(MaxPooling2D(pool_size=(2,2)))
@@ -70,6 +71,7 @@ model.add(Dense(7, kernel_initializer='uniform', activation = 'softmax'))
 opt = keras.optimizers.Adam(learning_rate=0.01)
 model.compile(optimizer = opt, loss = 'categorical_crossentropy', metrics = ['accuracy'])
 
+#print(model.summary())
 #################### TRAINING MODEL
 
 num_epochs = 15 #IDEALLY 100
@@ -88,7 +90,7 @@ history = model.fit(train_gen,
                     validation_data = test_gen,
                     validation_steps = num_test_img//32)
 
-model.save(os.path.join(os.getcwd(),"model_file_15epochs.h5"))
+model.save(os.path.join(os.getcwd(),"model_file_1epochs.h5"))
 
 
 
