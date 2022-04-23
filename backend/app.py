@@ -23,6 +23,20 @@ def gen_frames():
             for face in faces:
                 (startX,startY) = face[0],face[1]
                 (endX,endY) = face[2],face[3]
+
+                distX = abs(startX-endX)
+                distY = abs(startY-endY)
+
+                diff = abs(distX-distY)
+
+
+                if distX > distY:
+                    startY -= diff//2
+                    endY += diff//2
+                else:
+                    startX -= diff//2
+                    endX += diff//2
+
                 # draw rectangle over face
                 cv2.rectangle(frame, (startX,startY), (endX,endY), (0,255,0), 2)
 
