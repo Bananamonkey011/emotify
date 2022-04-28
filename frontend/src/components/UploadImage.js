@@ -24,15 +24,15 @@ export const WebcamCapture = () => {
     return (
         <div className="webcam-container">
             {/* Boundry Box source take from flask route in backend/app.py */}
-            <div className="webcam-img">
+            {/* <div className="webcam-img">
                 <img style={{ height: "100%", borderRadius: "20px", transform: "scaleX(-1)" }} src={"http://127.0.0.1:5000/video_feed"} />
-            </div>
+            </div> */}
 
-            {/* Display live camera feed or most recent capture depinding on if an image has been captured
+            {/* Display live camera feed or most recent capture depinding on if an image has been captured */}
             <div className="webcam-img">
                 {image == "" ? (
                     <Webcam
-                        style={{ height: "100%", borderRadius: "20px", transform: scaleX(-1)}}
+                        style={{ height: "100%", borderRadius: "20px", }}
                         audio={false}
                         mirrored
                         ref={webcamRef}
@@ -47,7 +47,7 @@ export const WebcamCapture = () => {
                 )}
             </div>
 
-            {/* Take Screenshot button switches to retake image if image has been captured already 
+            {/* Take Screenshot button switches to retake image if image has been captured already  */}
             <div>
                 {image != "" ? (
                     <button
@@ -70,9 +70,7 @@ export const WebcamCapture = () => {
                         Capture
                     </button>
                 )}
-                {/* Overlay div box to show results of face detection algorithm */}
-                {/* <div className='faceOverlay'/> 
-            </div> */}
+            </div>
         </div>
     );
 };
