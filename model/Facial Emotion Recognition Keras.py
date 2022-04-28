@@ -74,7 +74,7 @@ model.compile(optimizer = opt, loss = 'categorical_crossentropy', metrics = ['ac
 #print(model.summary())
 #################### TRAINING MODEL
 
-num_epochs = 15 #IDEALLY 100
+num_epochs = 1 #IDEALLY 100
 num_train_img = 0
 num_test_img = 0
 
@@ -90,7 +90,13 @@ history = model.fit(train_gen,
                     validation_data = test_gen,
                     validation_steps = num_test_img//32)
 
-model.save(os.path.join(os.getcwd(),"model_file_1epochs.h5"))
+#model.save(os.path.join(os.getcwd(),"model_file_1epochs.h5"))
+
+img = cv2.imread('sad_girl.jpg',0) #TEST IMAGE
+resized = cv2.resize(img, (48,48))
+normalize = resized/255.0
+reshape = np.reshape(normalize, (1, 48, 48, 1))
+print(model.predict(reshape))
 
 
 
