@@ -35,6 +35,7 @@ export const WebcamCapture = () => {
                         style={{ height: "100%", borderRadius: "20px", }}
                         audio={false}
                         mirrored
+                        screenshotQuality={0.12}
                         ref={webcamRef}
                         screenshotFormat="image/jpeg"
                         videoConstraints={videoConstraints}
@@ -46,7 +47,10 @@ export const WebcamCapture = () => {
                     />
                 )}
             </div>
-
+                
+                {image != "" && 
+                    console.log(image)
+                }
             {/* Take Screenshot button switches to retake image if image has been captured already  */}
             <div>
                 {image != "" ? (
