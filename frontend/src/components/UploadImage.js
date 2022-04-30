@@ -18,6 +18,15 @@ export const WebcamCapture = () => {
     // Callback function to setImage based on webcam screenshot
     const capture = React.useCallback(() => {
         const imageSrc = webcamRef.current.getScreenshot();
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ image: imageSrc })
+        };
+        fetch( "http://127.0.0.1:5000/model", requestOptions)
+        .then(response => response.text())
+        .then( data => console.log(data));
+
         setImage(imageSrc);
     });
 

@@ -1,5 +1,6 @@
 import './App.css';
 import UploadImage from './components/UploadImage';
+import React, { Component }  from 'react';
 function App() {
   return (
     <div className="App">

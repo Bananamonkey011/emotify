@@ -1,10 +1,12 @@
-from flask import Flask, render_template, Response
+from flask import Flask, render_template, Response, request
 import cv2
 import numpy as np
 import cvlib as cv
 from face_model import readEmotion
+from flask_cors import CORS
 
 app=Flask(__name__)
+cors = CORS(app, resources={r"/*": {"origins": "*"}})
 video_capture = cv2.VideoCapture(0)
 # Load a sample picture and learn how to recognize it.
 # 
@@ -44,10 +46,14 @@ def index():
 def video_feed():
     return Response(gen_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
-@app.route('/model')
+
+@app.route('/model' , methods=["POST"])
 def model():
-    return readEmotion()
+#he he he hah, clash royale time
+
+    return readEmotion(request.json["image"])
 
 
 if __name__=='__main__':
+
     app.run(debug=True)
