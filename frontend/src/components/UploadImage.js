@@ -12,6 +12,8 @@ const videoConstraints = {
 export const WebcamCapture = () => {
     //State to manage image
     const [image, setImage] = useState("");
+    const [emotion, setEmotion] = useState("");
+    const [url, setURL] = useState("");
     //webcam ref
     const webcamRef = React.useRef(null);
 
@@ -24,8 +26,12 @@ export const WebcamCapture = () => {
             body: JSON.stringify({ image: imageSrc })
         };
         fetch( "http://127.0.0.1:5000/model", requestOptions)
-        .then(response => response.text())
-        .then( data => console.log(data));
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+            setEmotion(data.emotion);
+            setURL(data.url);
+        })
 
         setImage(imageSrc);
     });
@@ -44,7 +50,7 @@ export const WebcamCapture = () => {
                         style={{ height: "100%", borderRadius: "20px", }}
                         audio={false}
                         mirrored
-                        screenshotQuality={0.12}
+                        screenshotQuality={0.92}
                         ref={webcamRef}
                         screenshotFormat="image/jpeg"
                         videoConstraints={videoConstraints}
@@ -57,9 +63,6 @@ export const WebcamCapture = () => {
                 )}
             </div>
                 
-                {image != "" && 
-                    console.log(image)
-                }
             {/* Take Screenshot button switches to retake image if image has been captured already  */}
             <div>
                 {image != "" ? (
@@ -67,6 +70,8 @@ export const WebcamCapture = () => {
                         onClick={(e) => {
                             e.preventDefault();
                             setImage("");
+                            setEmotion("");
+                            setURL("");
                         }}
                         className="webcam-btn"
                     >
@@ -84,6 +89,11 @@ export const WebcamCapture = () => {
                     </button>
                 )}
             </div>
+
+            {emotion != "" && <div>
+                <h1>Heres a playlist to fit your {emotion} mood..</h1>
+                <a href={url}>{url}</a>
+            </div>}
         </div>
     );
 };

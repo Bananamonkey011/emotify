@@ -38,19 +38,19 @@ def readEmotion(imgSrc):
         img = cv2.imread('input.jpg')
         prediction = DeepFace.analyze(img) # painfully slow on first run but very accurate
     except:
-        return ("Neutral", "https://open.spotify.com/playlist/37i9dQZF1DXaqCgtv7ZR3L") 
+        return ["Neutral", "https://open.spotify.com/playlist/37i9dQZF1DXaqCgtv7ZR3L"] 
 
     print(prediction['dominant_emotion'])
 
     if prediction['dominant_emotion'] == "angry" or prediction['dominant_emotion'] == "digust":
-        return ("Angry", "https://open.spotify.com/playlist/71Xpaq3Hbpxz6w9yDmIsaH")
+        return ["Angry", "https://open.spotify.com/playlist/71Xpaq3Hbpxz6w9yDmIsaH"]
     elif prediction['dominant_emotion'] == "fear":
-        return ("Fear", "https://open.spotify.com/playlist/19nbalrVKn6nltR7sI2AHR")
+        return ["Fear", "https://open.spotify.com/playlist/19nbalrVKn6nltR7sI2AHR"]
     elif prediction['dominant_emotion'] == "happy" or prediction['dominant_emotion'] == "surprise":
-        return ("Happy", "https://open.spotify.com/playlist/1llkez7kiZtBeOw5UjFlJq")
+        return ["Happy", "https://open.spotify.com/playlist/1llkez7kiZtBeOw5UjFlJq"]
     elif prediction['dominant_emotion'] == "sad":
-        return ("Sad", "https://open.spotify.com/playlist/37i9dQZF1DX7qK8ma5wgG1")
+        return ["Sad", "https://open.spotify.com/playlist/37i9dQZF1DX7qK8ma5wgG1"]
     elif prediction['dominant_emotion'] == "neutral": 
-        return ("Neutral", "https://open.spotify.com/playlist/37i9dQZF1DXaqCgtv7ZR3L")
+        return ["Neutral", "https://open.spotify.com/playlist/37i9dQZF1DXaqCgtv7ZR3L"]
     else:
-        return ("Default", "https://open.spotify.com/playlist/1llkez7kiZtBeOw5UjFlJq")
+        return ["Default", "https://open.spotify.com/playlist/1llkez7kiZtBeOw5UjFlJq"]

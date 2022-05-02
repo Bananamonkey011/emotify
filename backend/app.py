@@ -1,4 +1,4 @@
-from flask import Flask, render_template, Response, request
+from flask import Flask, render_template, Response, request, jsonify
 import cv2
 import numpy as np
 import cvlib as cv
@@ -50,10 +50,9 @@ def video_feed():
 @app.route('/model' , methods=["POST"])
 def model():
 #he he he hah, clash royale time
-
-    return readEmotion(request.json["image"])
+    out = readEmotion(request.json["image"])
+    return jsonify(emotion=out[0],url=out[1])
 
 
 if __name__=='__main__':
-
     app.run(debug=True)
